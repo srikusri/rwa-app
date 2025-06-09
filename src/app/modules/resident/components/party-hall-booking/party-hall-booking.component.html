@@ -1,0 +1,14 @@
+<form [formGroup]="bookingForm" (ngSubmit)="submitBooking()">
+  <mat-form-field appearance="fill">
+    <mat-label>Select Date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date" (dateChange)="onDateChange($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="bookingForm.invalid">Book</button>
+</form>
+<mat-list>
+  <mat-list-item *ngFor="let booking of bookings$ | async">
+    {{ booking.date | date }} - {{ booking.status }}
+  </mat-list-item>
+</mat-list>

@@ -9,6 +9,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducer } from './core/store/reducers';
 import { AppEffects } from './core/store/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { tenantReducer } from './core/store/reducers/tenant.reducer'; // Import tenant reducer
+import { TenantEffects } from './core/store/effects/tenant.effects'; // Import tenant effects
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
-    StoreModule.forRoot({ app: reducer }),
-    EffectsModule.forRoot([AppEffects])
+    StoreModule.forRoot({
+      app: reducer, // Existing app reducer
+      tenants: tenantReducer // Register tenant reducer
+    }),
+    EffectsModule.forRoot([AppEffects, TenantEffects]) // Add TenantEffects
   ],
   bootstrap: [AppComponent]
 })

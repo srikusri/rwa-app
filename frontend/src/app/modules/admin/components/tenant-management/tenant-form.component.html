@@ -1,0 +1,18 @@
+<p>tenant-form works!</p>
+<!-- Placeholder for tenant form -->
+<form [formGroup]="tenantForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Tenant Name:</label>
+    <input id="name" formControlName="name">
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+  <div>
+    <label for="adminUser">Tenant Admin User ID:</label>
+    <input id="adminUser" formControlName="initialAdminUserId">
+    <!-- This will later be a user selection dropdown -->
+  </div>
+  <button type="submit" [disabled]="tenantForm.invalid">Submit</button>
+</form>

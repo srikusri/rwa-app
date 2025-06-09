@@ -1,0 +1,11 @@
+<form [formGroup]="announcementForm" (ngSubmit)="submitAnnouncement()">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Content</mat-label>
+    <textarea matInput formControlName="content"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="announcementForm.invalid">Post</button>
+</form>

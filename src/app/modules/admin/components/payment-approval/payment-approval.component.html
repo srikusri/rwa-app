@@ -1,0 +1,25 @@
+<h2>Financial Overview</h2>
+<mat-table [dataSource]="payments$ | async">
+  <ng-container matColumnDef="type">
+    <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+    <mat-cell *matCellDef="let payment">{{ payment.type }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="amount">
+    <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+    <mat-cell *matCellDef="let payment">{{ payment.amount }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+    <mat-cell *matCellDef="let payment">{{ payment.status }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+    <mat-cell *matCellDef="let payment">
+      <button mat-button (click)="approvePayment(payment.id)" *ngIf="payment.status === 'pending'">Approve</button>
+      <button mat-button color="warn" (click)="rejectPayment(payment.id)" *ngIf="payment.status === 'pending'">Reject</button>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="['type', 'amount', 'status', 'actions']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['type', 'amount', 'status', 'actions']"></mat-row>
+</mat-table>
+<h3>Total Approved: {{ totalApproved$ | async | number }}</h3>

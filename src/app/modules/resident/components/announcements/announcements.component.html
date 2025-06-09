@@ -1,0 +1,7 @@
+<h2>Announcements</h2>
+<mat-list>
+  <mat-list-item *ngFor="let announcement of announcements$ | async">
+    <h3>{{ announcement.title }}</h3>
+    <p>{{ announcement.content }} - {{ announcement.createdAt | date }}</p>
+  </mat-list-item>
+</mat-list>

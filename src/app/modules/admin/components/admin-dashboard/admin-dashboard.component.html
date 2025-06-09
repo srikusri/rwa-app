@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span>Admin Dashboard</span>
+</mat-toolbar>
+<div class="container">
+  <mat-card>
+    <mat-card-title>Manage Apartment</mat-card-title>
+    <mat-card-content>
+      <button mat-raised-button color="primary" (click)="navigateTo('users')">Manage Users</button>
+      <button mat-raised-button color="primary" (click)="navigateTo('payments')">Financial Management</button>
+      <button mat-raised-button color="primary" (click)="navigateTo('classifieds')">Approve Classifieds</button>
+      <button mat-raised-button color="primary" (click)="navigateTo('complaints')">Manage Complaints</button>
+      <button mat-raised-button color="primary" (click)="navigateTo('announcements')">Post Announcements</button>
+    </mat-card-content>
+  </mat-card>
+</div>

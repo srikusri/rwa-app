@@ -1,0 +1,18 @@
+<mat-table [dataSource]="complaints$ | async">
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+    <mat-cell *matCellDef="let complaint">{{ complaint.description }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+    <mat-cell *matCellDef="let complaint">{{ complaint.status }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+    <mat-cell *matCellDef="let complaint">
+      <button mat-button (click)="resolveComplaint(complaint.id)" *ngIf="complaint.status === 'open'">Resolve</button>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="['description', 'status', 'actions']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['description', 'status', 'actions']"></mat-row>
+</mat-table>

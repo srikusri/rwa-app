@@ -24,16 +24,23 @@ export class AuthService {
     return this.http.post<User>(`${this.apiUrl}/users`, user);
   }
 
-  assignAdmin(userId: string, apartmentId: string): Observable<User> {
-    return this.http.patch<User>(`${this.apiUrl}/users/${userId}`, { role: 'admin', apartmentId });
-  }
+  // assignAdmin method removed
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/users`);
   }
 
+  updateUserRole(userId: string, newRole: string): Observable<User> {
+    // tenantId is implicitly handled by the backend based on the currently authenticated user (if tenantAdmin)
+    // or not needed if making someone a superAdmin (if logged in as superAdmin)
+    return this.http.patch<User>(`${this.apiUrl}/users/${userId}`, { role: newRole });
+  }
+
   getCurrentUser(): Observable<User> {
     // Mock; replace with real auth logic
-    return of({ id: 'currentUserId', mobile: '1234567890', role: 'resident', name: 'User', apartmentId: 'apt1', isApproved: true });
+    // Default to tenantAdmin for this step
+    return of({ id: 'tenantAdminUser', mobile: '1122334455', role: 'tenantAdmin', name: 'Current Tenant Admin', tenantId: 'default-tenant', isApproved: true });
+    // For testing as superAdmin, uncomment below and comment out tenantAdmin:
+    // return of({ id: 'superAdminUser', mobile: '1234567890', role: 'superAdmin', name: 'Current Super Admin', tenantId: null, isApproved: true });
   }
 }

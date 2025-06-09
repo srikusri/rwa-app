@@ -1,3 +1,6 @@
+<div *ngIf="currentUser && currentUser.role === 'superAdmin'" class="admin-message">
+  <p>SuperAdmins currently cannot create announcements directly from this UI due to pending tenant selection functionality. Please use backend tools if necessary.</p>
+</div>
 <form [formGroup]="announcementForm" (ngSubmit)="submitAnnouncement()">
   <mat-form-field appearance="fill">
     <mat-label>Title</mat-label>
@@ -7,5 +10,5 @@
     <mat-label>Content</mat-label>
     <textarea matInput formControlName="content"></textarea>
   </mat-form-field>
-  <button mat-raised-button color="primary" type="submit" [disabled]="announcementForm.invalid">Post</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="announcementForm.invalid || announcementForm.disabled">Post</button>
 </form>

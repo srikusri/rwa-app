@@ -1,0 +1,12 @@
+<form [formGroup]="complaintForm" (ngSubmit)="submitComplaint()">
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="complaintForm.invalid">Submit</button>
+</form>
+<mat-list>
+  <mat-list-item *ngFor="let complaint of complaints$ | async">
+    {{ complaint.description }} - {{ complaint.status }} ({{ complaint.createdAt | date }})
+  </mat-list-item>
+</mat-list>

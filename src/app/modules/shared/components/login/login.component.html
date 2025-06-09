@@ -1,0 +1,12 @@
+<form (ngSubmit)="login()">
+  <mat-form-field appearance="fill">
+    <mat-label>Mobile Number</mat-label>
+    <input matInput [(ngModel)]="mobile" name="mobile">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="generateOtp()">Get OTP</button>
+  <mat-form-field appearance="fill" *ngIf="otpSent">
+    <mat-label>OTP</mat-label>
+    <input matInput [(ngModel)]="otp" name="otp">
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" *ngIf="otpSent">Login</button>
+</form>

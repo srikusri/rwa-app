@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "rwa-app:build:production"
+              "buildTarget": "rwa-app:build:production"
             },
             "development": {
-              "browserTarget": "rwa-app:build:development"
+              "buildTarget": "rwa-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rwa-app:build"
+            "buildTarget": "rwa-app:build"
           }
         },
         "test": {

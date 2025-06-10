@@ -5,9 +5,12 @@ import { SharedModule } from '../shared/shared.module';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { PaymentApprovalComponent } from './components/payment-approval/payment-approval.component';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 import { ClassifiedApprovalComponent } from './components/classified-approval/classified-approval.component';
 import { ComplaintManagementComponent } from './components/complaint-management/complaint-management.component';
 import { AnnouncementManagementComponent } from './components/announcement-management/announcement-management.component';
+import { TenantListComponent } from './components/tenant-management/tenant-list.component'; // Import TenantListComponent
+import { TenantFormComponent } from './components/tenant-management/tenant-form.component'; // Import TenantFormComponent
 
 @NgModule({
   declarations: [
@@ -16,12 +19,15 @@ import { AnnouncementManagementComponent } from './components/announcement-manag
     PaymentApprovalComponent,
     ClassifiedApprovalComponent,
     ComplaintManagementComponent,
-    AnnouncementManagementComponent
+    AnnouncementManagementComponent,
+    TenantListComponent, // Declare TenantListComponent
+    TenantFormComponent  // Declare TenantFormComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule // Add ReactiveFormsModule to imports
   ]
 })
 export class AdminModule {}

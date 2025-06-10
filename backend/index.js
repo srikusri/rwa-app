@@ -8,6 +8,7 @@ const classifiedRoutes = require('./routes/classifieds');
 const complaintRoutes = require('./routes/complaints');
 const announcementRoutes = require('./routes/announcements');
 const rulesRoutes = require('./routes/rules');
+const tenantRoutes = require('./routes/tenants'); // Require tenants router
 
 const app = express();
 const PORT = 3000;
@@ -22,6 +23,7 @@ app.use('/classifieds', classifiedRoutes);
 app.use('/complaints', complaintRoutes);
 app.use('/announcements', announcementRoutes);
 app.use('/rules', rulesRoutes);
+app.use('/tenants', tenantRoutes); // Mount tenants router
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

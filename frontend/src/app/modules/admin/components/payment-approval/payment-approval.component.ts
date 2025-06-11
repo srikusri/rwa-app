@@ -16,8 +16,8 @@ export class PaymentApprovalComponent implements OnInit {
     this.payments$ = store.select(state => state.app.payments);
     this.totalApproved$ = store.select(state =>
       state.app.payments
-        .filter(p => p.status === 'approved')
-        .reduce((sum, p) => sum + p.amount, 0)
+        .filter((p: Payment) => p.status === 'approved')
+        .reduce((sum: number, p: Payment) => sum + p.amount, 0)
     );
   }
 

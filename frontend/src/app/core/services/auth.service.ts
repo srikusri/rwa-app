@@ -39,7 +39,7 @@ export class AuthService {
   getCurrentUser(): Observable<User> {
     // Mock; replace with real auth logic
     // Default to tenantAdmin for this step
-    return of({ id: 'tenantAdminUser', mobile: '1122334455', role: 'tenantAdmin', name: 'Current Tenant Admin', tenantId: 'default-tenant', isApproved: true });
+    return of({ id: 'tenantAdminUser', mobile: '1122334455', role: 'tenantAdmin', name: 'Current Tenant Admin', tenantId: 'default-tenant', apartmentId: 'default-apartment', isApproved: true });
     // For testing as superAdmin, uncomment below and comment out tenantAdmin:
     // return of({ id: 'superAdminUser', mobile: '1234567890', role: 'superAdmin', name: 'Current Super Admin', tenantId: null, isApproved: true });
   }

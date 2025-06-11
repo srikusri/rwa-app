@@ -30,7 +30,7 @@ export class AnnouncementManagementComponent implements OnInit { // Implemented 
   ngOnInit() { // Added ngOnInit
     this.authService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
-      if (user.role === 'superAdmin') {
+      if ((user.role as any) === 'superAdmin') {
         this.announcementForm.disable(); // Disable form for superAdmin
       }
     });

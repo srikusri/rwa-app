@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { User } from '../../../core/models/user.model'; // Added User import
 
 @Component({
   selector: 'app-login',
@@ -20,10 +21,10 @@ export class LoginComponent {
   }
 
   login() {
-    this.authService.verifyOtp(this.mobile, this.otp).subscribe(valid => {
+    this.authService.verifyOtp(this.mobile, this.otp).subscribe((valid: boolean) => {
       if (valid) {
         this.authService.onboardUser({ mobile: this.mobile, role: 'resident', name: 'User', apartmentId: 'apt1', isApproved: false })
-          .subscribe(user => {
+          .subscribe((user: User) => {
             this.router.navigate([user.role === 'admin' ? '/admin' : '/resident']);
           });
       }

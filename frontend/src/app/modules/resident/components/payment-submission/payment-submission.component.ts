@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Payment } from '../../../core/models/payment.model';
 import * as AppActions from '../../../core/store/actions';
+import { AppState } from '../../../core/store/reducers';
 import { PaymentService } from '../../../core/services/payment.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -17,7 +18,7 @@ export class PaymentSubmissionComponent {
   uploading = false;
 
   constructor(
-    private store: Store<{ app: AppState }>,
+    private store: Store<AppState>,
     private fb: FormBuilder,
     private paymentService: PaymentService,
     private snackBar: MatSnackBar

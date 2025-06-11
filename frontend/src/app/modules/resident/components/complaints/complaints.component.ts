@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Complaint } from '../../../core/models/complaint.model';
 import * as AppActions from '../../../core/store/actions';
+import { AppState } from '../../../core/store/reducers';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -14,8 +15,8 @@ export class ComplaintsComponent implements OnInit {
   complaintForm: FormGroup;
   complaints$: Observable<Complaint[]>;
 
-  constructor(private store: Store<{ app: AppState }>, private fb: FormBuilder) {
-    this.complaints$ = store.select(state => state.app.complaints);
+  constructor(private store: Store<AppState>, private fb: FormBuilder) {
+    this.complaints$ = store.select(state => state.complaints);
     this.complaintForm = this.fb.group({
       description: ['', Validators.required]
     });

@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Payment } from '../../../core/models/payment.model';
 import * as AppActions from '../../../core/store/actions';
+import { AppState } from '../../../core/store/reducers';
 
 @Component({
   selector: 'app-payment-approval',
@@ -12,10 +13,10 @@ export class PaymentApprovalComponent implements OnInit {
   payments$: Observable<Payment[]>;
   totalApproved$: Observable<number>;
 
-  constructor(private store: Store<{ app: AppState }>) {
-    this.payments$ = store.select(state => state.app.payments);
+  constructor(private store: Store<AppState>) {
+    this.payments$ = store.select(state => state.payments);
     this.totalApproved$ = store.select(state =>
-      state.app.payments
+      state.payments
         .filter((p: Payment) => p.status === 'approved')
         .reduce((sum: number, p: Payment) => sum + p.amount, 0)
     );

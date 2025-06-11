@@ -1,5 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { User, Payment, Booking, Classified, Complaint, Announcement } from '../models';
+import { User } from '../models/user.model';
+import { Payment } from '../models/payment.model';
+import { Booking } from '../models/booking.model';
+import { Classified } from '../models/classified.model';
+import { Complaint } from '../models/complaint.model';
+import { Announcement } from '../models/announcement.model';
 import * as AppActions from './actions';
 
 export interface AppState {

@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Booking } from '../../../core/models/booking.model';
 import * as AppActions from '../../../core/store/actions';
+import { AppState } from '../../../core/store/reducers';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
@@ -15,8 +16,8 @@ export class PartyHallBookingComponent implements OnInit {
   bookingForm: FormGroup;
   bookings$: Observable<Booking[]>;
 
-  constructor(private store: Store<{ app: AppState }>, private fb: FormBuilder) {
-    this.bookings$ = store.select(state => state.app.bookings);
+  constructor(private store: Store<AppState>, private fb: FormBuilder) {
+    this.bookings$ = store.select(state => state.bookings);
     this.bookingForm = this.fb.group({
       date: ['', Validators.required]
     });

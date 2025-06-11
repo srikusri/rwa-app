@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Classified } from '../../../core/models/classified.model';
 import * as AppActions from '../../../core/store/actions';
+import { AppState } from '../../../core/store/reducers';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -15,8 +16,8 @@ export class ClassifiedsComponent implements OnInit {
   classifieds$: Observable<Classified[]>;
   currentUserId = 'currentUserId';
 
-  constructor(private store: Store<{ app: AppState }>, private fb: FormBuilder) {
-    this.classifieds$ = store.select(state => state.app.classifieds);
+  constructor(private store: Store<AppState>, private fb: FormBuilder) {
+    this.classifieds$ = store.select(state => state.classifieds);
     this.classifiedForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required]

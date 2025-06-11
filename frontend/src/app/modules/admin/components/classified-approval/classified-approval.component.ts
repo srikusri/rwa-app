@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Classified } from '../../../core/models/classified.model';
 import * as AppActions from '../../../core/store/actions';
+import { AppState } from '../../../core/store/reducers';
 
 @Component({
   selector: 'app-classified-approval',
@@ -11,8 +12,8 @@ import * as AppActions from '../../../core/store/actions';
 export class ClassifiedApprovalComponent implements OnInit {
   classifieds$: Observable<Classified[]>;
 
-  constructor(private store: Store<{ app: AppState }>) {
-    this.classifieds$ = store.select(state => state.app.classifieds);
+  constructor(private store: Store<AppState>) {
+    this.classifieds$ = store.select(state => state.classifieds);
   }
 
   ngOnInit() {

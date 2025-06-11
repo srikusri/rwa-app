@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Announcement } from '../../../core/models/announcement.model';
 import * as AppActions from '../../../core/store/actions';
+import { AppState } from '../../../core/store/reducers';
 
 @Component({
   selector: 'app-announcements',
@@ -12,8 +13,8 @@ import * as AppActions from '../../../core/store/actions';
 export class AnnouncementsComponent implements OnInit {
   announcements$: Observable<Announcement[]>;
 
-  constructor(private store: Store<{ app: AppState }>) {
-    this.announcements$ = store.select(state => state.app.announcements);
+  constructor(private store: Store<AppState>) {
+    this.announcements$ = store.select(state => state.announcements);
   }
 
   ngOnInit() {
